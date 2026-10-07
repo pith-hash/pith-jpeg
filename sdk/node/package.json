@@ -1,0 +1,33 @@
+{
+  "name": "@pith-hash/pith-jpeg",
+  "version": "0.1.0",
+  "description": "pith-jpeg SDK: JPEG decoding and kernel replay through the pith-hash Rust cdylib",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pith-hash/pith-jpeg.git"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "prebuilds/",
+    "reference.json"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "jpeg",
+    "phash",
+    "perceptual-hash",
+    "pith-hash",
+    "ffi",
+    "koffi"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "koffi": "^2.12.0"
+  }
+}

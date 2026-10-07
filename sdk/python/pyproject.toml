@@ -1,0 +1,35 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 pith-hash
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pith-jpeg"
+version = "0.1.0"
+description = "pith-jpeg SDK: JPEG decoding and kernel replay through the pith-hash Rust cdylib"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+authors = [{ name = "pith-hash" }]
+keywords = ["jpeg", "phash", "perceptual-hash", "pith-hash", "ffi", "ctypes"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Security :: Cryptography",
+]
+
+[project.urls]
+Repository = "https://github.com/pith-hash/pith-jpeg"
+
+[tool.setuptools]
+packages = ["pith_jpeg"]
+
+[tool.setuptools.package-data]
+pith_jpeg = ["*.dll", "*.so", "*.dylib"]

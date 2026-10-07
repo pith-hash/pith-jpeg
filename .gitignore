@@ -63,3 +63,7 @@ docs/superpowers/
 
 # Build
 /target/
+
+# SDK build artifacts (py wheel build, node/go module caches)
+sdk/python/build/
+*.egg-info/

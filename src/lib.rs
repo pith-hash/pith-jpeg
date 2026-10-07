@@ -32,7 +32,10 @@
 //! independent oracle that the transcription stays inside the documented
 //! tolerance (see `tests/` and `src/idct.rs`).
 
-#![forbid(unsafe_code)]
+// `unsafe` is denied everywhere except `ffi`, the C ABI surface the
+// language SDKs bind through: raw pointers exist only at that boundary,
+// and every exported function is a documented `unsafe extern "C"` fn.
+#![deny(unsafe_code)]
 #![deny(missing_docs)]
 
 extern crate alloc;
@@ -46,6 +49,7 @@ mod parser;
 mod progressive;
 mod upsample;
 
+pub mod ffi;
 pub mod reference;
 
 use alloc::vec::Vec;

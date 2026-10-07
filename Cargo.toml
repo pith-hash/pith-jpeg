@@ -10,6 +10,11 @@ repository = "https://github.com/pith-hash/pith-jpeg"
 homepage = "https://pith-jpeg.n24q02m.com"
 categories = ["algorithms", "multimedia::encoding"]
 
+[lib]
+# The cdylib is the binary every language SDK binds through (ctypes,
+# koffi, cgo); the rlib keeps the Rust consumers unchanged.
+crate-type = ["cdylib", "rlib"]
+
 [dependencies]
 pith-digest = { git = "https://github.com/pith-hash/pith-digest.git", branch = "main" }
 pith-image = { git = "https://github.com/pith-hash/pith-image.git", branch = "main" }
@@ -32,6 +37,10 @@ codegen-units = 1
 [profile.test]
 opt-level = 2
 
+# `unsafe_code` is denied at the crate root (`#![deny(unsafe_code)]` in
+# src/lib.rs), with the single `#![allow(unsafe_code)]` confined to
+# src/ffi.rs, the C ABI surface. It cannot live here: `[lints]` entries
+# become command-line flags, and command-line lints cannot be
+# re-allowed by inner attributes.
 [lints.rust]
-unsafe_code = "forbid"
 missing_docs = "deny"
