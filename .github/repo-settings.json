@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "tier": 1,
+  "description": "pith jpeg lane: baseline and progressive JPEG decoding, byte-exact with libjpeg islow (zero-dep Rust)",
+  "homepage": "https://pith-jpeg.n24q02m.com",
+  "topics": [
+    "rust",
+    "image",
+    "jpeg",
+    "codec",
+    "hashing"
+  ]
+}
