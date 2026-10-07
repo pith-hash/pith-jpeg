@@ -4,7 +4,7 @@
 
 - Repo: `pith-hash/pith-jpeg`
 - Description: pith jpeg lane: baseline and progressive JPEG decoding, byte-exact with libjpeg islow (zero-dep Rust)
-- License: Apache-2.0
+- License: MIT
 
 ## Build & Test
 
