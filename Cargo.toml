@@ -16,12 +16,12 @@ categories = ["algorithms", "multimedia::encoding"]
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-pith-digest = { git = "https://github.com/pith-hash/pith-digest.git", branch = "main" }
-pith-image = { git = "https://github.com/pith-hash/pith-image.git", branch = "main" }
+pith-digest = { version = "0.1", git = "https://github.com/pith-hash/pith-digest.git", branch = "main" }
+pith-image = { version = "0.1", git = "https://github.com/pith-hash/pith-image.git", branch = "main" }
 # The orthonormal f64 DCT-III oracle backing `src/reference.rs`: the
 # decode path itself is libjpeg's fixed-point islow transcription and
 # never calls it (see src/idct.rs).
-pith-math = { git = "https://github.com/pith-hash/pith-math.git", branch = "main" }
+pith-math = { version = "0.1", git = "https://github.com/pith-hash/pith-math.git", branch = "main" }
 
 [[bin]]
 name = "gen-reference"
