@@ -117,8 +117,10 @@ def test_unknown_layout_is_invalid() -> None:
 def test_kernel_vector_is_reproduced(name: str) -> None:
     vector = VECTORS[name]
     input_values = lanes_to_values(vector["input"])
-    tol_abs = struct.unpack("<d", bytes.fromhex(vector["tol_abs"]))[0]
-    tol_rel = struct.unpack("<d", bytes.fromhex(vector["tol_rel"]))[0]
+    # Same big-endian hex render as the lanes (see lanes_to_values); decoding the
+    # tolerances little-endian turned 1e-13 / 1e-12 into ~1e-297 / ~1e-222.
+    tol_abs = struct.unpack(">d", bytes.fromhex(vector["tol_abs"]))[0]
+    tol_rel = struct.unpack(">d", bytes.fromhex(vector["tol_rel"]))[0]
     expected = lanes_to_values(vector["output"])
 
     if name == "dequant.zigzag.8x8":
