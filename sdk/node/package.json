@@ -1,6 +1,6 @@
 {
   "name": "@pith-hash/pith-jpeg",
-  "version": "0.1.0",
+  "version": "0.1.1-beta.1",
   "description": "pith-jpeg SDK: JPEG decoding and kernel replay through the pith-hash Rust cdylib",
   "license": "MIT",
   "repository": {

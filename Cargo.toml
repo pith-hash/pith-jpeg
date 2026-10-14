@@ -1,6 +1,6 @@
 [package]
 name = "pith-jpeg"
-version = "0.1.0"
+version = "0.1.1-beta.1"
 edition = "2024"
 rust-version = "1.85"
 description = "pith jpeg lane: baseline and progressive JPEG decoding, byte-exact with libjpeg islow (zero-dep Rust)"
