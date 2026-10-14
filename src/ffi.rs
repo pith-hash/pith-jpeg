@@ -167,7 +167,11 @@ fn digest_for(bytes: &[u8], layout: u32) -> Result<(u64, u32), i32> {
 ///
 /// `data` must point to `len` readable bytes and `digest` to one
 /// writable `u64`; both stay valid for the duration of the call.
-#[unsafe(no_mangle)]
+// Every export in this module is `no_mangle` outside `cfg(test)` only. Built twice
+// (unit-test binary and shipped library) one `no_mangle` symbol gets two coverage
+// hashes, and `llvm-cov` keeps whichever copy it reads first, so the coverage gate
+// would depend on object order. A unit-test build keeps the normal mangled names.
+#[cfg_attr(not(test), unsafe(no_mangle))]
 pub unsafe extern "C" fn pith_jpeg_decode(
     data: *const u8,
     len: usize,
@@ -205,7 +209,7 @@ pub unsafe extern "C" fn pith_jpeg_decode(
 ///
 /// `data` must point to `len` readable bytes and `out` to one
 /// writable `u32`; both stay valid for the duration of the call.
-#[unsafe(no_mangle)]
+#[cfg_attr(not(test), unsafe(no_mangle))]
 pub unsafe extern "C" fn pith_jpeg_channels(data: *const u8, len: usize, out: *mut u32) -> i32 {
     if data.is_null() && len != 0 {
         return PITH_E_INVALID;
@@ -244,7 +248,7 @@ pub unsafe extern "C" fn pith_jpeg_channels(data: *const u8, len: usize, out: *m
 /// `output_len` writable bytes; both stay valid for the duration of
 /// the call. Buffers carry little-endian `f64` bit patterns; both
 /// lengths must be exactly 512.
-#[unsafe(no_mangle)]
+#[cfg_attr(not(test), unsafe(no_mangle))]
 pub unsafe extern "C" fn pith_jpeg_dequant_zigzag(
     input: *const u8,
     input_len: usize,
@@ -276,7 +280,7 @@ pub unsafe extern "C" fn pith_jpeg_dequant_zigzag(
 /// the call. Buffers carry little-endian `f64` bit patterns; the
 /// input length must be exactly 1024 and the output length exactly
 /// 512.
-#[unsafe(no_mangle)]
+#[cfg_attr(not(test), unsafe(no_mangle))]
 pub unsafe extern "C" fn pith_jpeg_dequant(
     input: *const u8,
     input_len: usize,
@@ -310,7 +314,7 @@ pub unsafe extern "C" fn pith_jpeg_dequant(
 /// the call. Buffers carry little-endian `f64` bit patterns; the
 /// input length must be exactly 1024 and the output length exactly
 /// 512.
-#[unsafe(no_mangle)]
+#[cfg_attr(not(test), unsafe(no_mangle))]
 pub unsafe extern "C" fn pith_jpeg_idct_islow(
     input: *const u8,
     input_len: usize,
@@ -343,7 +347,7 @@ pub unsafe extern "C" fn pith_jpeg_idct_islow(
 /// `output_len` writable bytes; both stay valid for the duration of
 /// the call. Buffers carry little-endian `f64` bit patterns; both
 /// lengths must be exactly 512.
-#[unsafe(no_mangle)]
+#[cfg_attr(not(test), unsafe(no_mangle))]
 pub unsafe extern "C" fn pith_jpeg_idct_oracle(
     input: *const u8,
     input_len: usize,
