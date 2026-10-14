@@ -2,7 +2,7 @@
 # Copyright (c) 2026 pith-hash
 
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=70.1"]
 build-backend = "setuptools.build_meta"
 
 [project]
